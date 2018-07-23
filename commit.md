@@ -1,1 +1,1 @@
-fix: merge with master on 7/19/2018
+added @angular/flex-layout dependency on 7/23/2018
