@@ -1,1 +1,1 @@
-Fixing npm installation on 7/28/2018
+Fixing style.scss on 7/30/2018
