@@ -1,1 +1,1 @@
-Update CNAME on 8/7/2018
+Update CNAME on 8/9/2018
