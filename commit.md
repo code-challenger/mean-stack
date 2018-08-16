@@ -1,1 +1,1 @@
-trying to swithc to docs based site generation in ghpages on 8/14/2018
+Updated concurrently syntax on 8/16/2018
