@@ -1,1 +1,1 @@
-CSS - placeholer color on 8/29/2018
+fix auth pages background on 9/4/2018
