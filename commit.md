@@ -1,1 +1,1 @@
-fix auth pages background on 9/4/2018
+Change router behavior on 9/7/2018
