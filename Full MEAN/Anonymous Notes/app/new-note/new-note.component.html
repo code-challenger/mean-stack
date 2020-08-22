@@ -1,0 +1,21 @@
+<form (submit) = 'onSubmit()' #nForm=ngForm id="nform" name="nForm">
+  <label for="note">Note:</label>
+  <textarea
+    name="text"
+    id="text"
+    cols="100"
+    rows="1"
+    required
+    [minlength]="note.minlength"
+    [maxlength]="note.maxlength"
+    [(ngModel)] = "note.text"
+    #text = "ngModel"></textarea>
+    <input
+      type="submit"
+      value="Add Note"
+      name="submit"
+      [disabled] = "!nForm.valid">
+      <div *ngIf="note.text.length < 2 && (text.touched || text.dirty)">
+        <p>Length of note must be at least 2 characters long</p>
+      </div>
+</form>

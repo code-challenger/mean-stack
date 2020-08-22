@@ -1,0 +1,7 @@
+<h1>{{title}}</h1>
+
+<app-new-note (noteEmit)="createdNote($event)"></app-new-note>
+<br>
+<div *ngIf="notes.length > 0">
+  <app-note [note]=notes[i] *ngFor="let note of notes; let i=index"></app-note>
+</div>

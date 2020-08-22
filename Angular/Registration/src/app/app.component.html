@@ -1,0 +1,156 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>{{title}}</h1>
+</div>
+  <br>
+  <div *ngIf = "newUser">
+    <p>Thank you for registering with us, {{newUser.first_name}}. We just sent you a confirmation email at {{newUser.email}}, and we will send all mail to {{newUser.address }} {{newUser.unit}} {{newUser.city}}, {{newUser.state}}</p>
+    <br>
+    <p>Have a wonderful day!</p>
+  </div>
+  <br>
+  <h2>Account Information</h2>
+  
+    <form (submit) = "onSubmit()">
+      <label for="first_name">First Name:</label>
+      <input 
+      type="text" 
+      name="first_name"
+      requiredminlength = "2"
+      maxlength= "45"
+      [(ngModel)] = "user.first_name"
+      #first_name = "ngModel">
+      <br>
+      <!--First Name Error Messages-->
+      <!--<div *ngIf = 'user.first_name.length < 1'><p>First name is required</p></div>
+      <div *ngIf = 'user.first_name.length < 2'><p>First name must be at least 2 characters long</p></div>-->
+      <!---->
+      <label for="last_name">Last Name:</label>
+      <input 
+      type="text" 
+      name="last_name"
+      required
+      minlength = "2"
+      maxlength= "45"
+      [(ngModel)] = "user.last_name"
+      #last_name = "ngModel">
+      <br>
+      <!--Last Name Error Messages-->
+      <!--<div *ngIf = 'user.last_name.length < 1'><p>Last name is required</p></div>
+      <div *ngIf = 'user.last_name.length < 2'><p>Last name must be at least 2 characters long</p></div>-->
+      <!---->
+      <label for="email">Email:</label>
+      <input 
+      type="text" 
+      name="email"
+      required
+      minlength = "6"
+      maxlength= "45"
+      [(ngModel)] = "user.email"
+      #email = "ngModel">
+      <br>
+      <!--Email Error Messages-->
+      <!--<div *ngIf = 'user.email.length < 1'><p>Email is required</p></div>
+      <div *ngIf = 'user.email.length < 6'><p> Email must be at least 6 characters long</p></div>-->
+      <!---->
+      <label for="password">Password:</label>
+      <input 
+      type="password" 
+      name="password"
+      required
+      minlength = "8"
+      maxlength = "70"
+      pattern = '/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+      [(ngModel)] = "user.password"
+      #password = "ngModel">
+      <br>
+      <!--Password Error Messages-->
+      <!--<div *ngIf = 'user.password.length < 1'><p>Password is required</p></div>
+      <div *ngIf = 'user.password.length < 2'><p>Password must be at least 8 characters long</p></div>-->
+      <!---->
+      <label for="password_confirmation">Password Confirmation:</label>
+      <input 
+      type="password" 
+      name="password_confirmation"
+      required
+      minlength = "8"
+      maxlength = "70"
+      [(ngModel)] = "user.password_confirmation"
+      #password_confirmation = "ngModel">
+      <br>
+      <!--Password confirmation Error Messages-->
+      <!--<div *ngIf = 'user.password_confirmation.length < 1'><p>Password Confirmation is required</p></div>
+      <div *ngIf = 'user.password_confirmation.length < 2'><p>Password Confirmation must be at least 8 characters long</p></div>
+      <div *ngIf = 'user.password != user.password_confirmation'><p>Password and Password confirmation do not match</p></div>-->
+      <!---->
+      <label for="address">Street Address:</label>
+      <input 
+      type="text" 
+      name="address"
+      required
+      minlength = "6"
+      maxlength= "45"
+      [(ngModel)] = "user.address"
+      #address = "ngModel">
+      <br>
+      <!--address Error Messages-->
+      <!--<div *ngIf = 'user.address.length < 1'><p>Address is required</p></div>-->
+      <!---->
+      <label for="unit">Unit/Apt:</label>
+      <input 
+      type="text" 
+      name="unit"
+      minlength = "1"
+      maxlength= "10"
+      [(ngModel)] = "user.unit"
+      #unit = "ngModel">
+      <br>
+      <label for="city">City:</label>
+      <input 
+      type="text" 
+      name="city"
+      required
+      minlength = "2"
+      maxlength= "45"
+      [(ngModel)] = "user.city"
+      #city = "ngModel">
+      <br>
+      <!--city Error Messages-->
+      <!--<div *ngIf = 'user.city.length < 1'><p>City is required</p></div>-->
+      <!---->
+      <label for="state">State:</label>
+      <select name="state"
+      required
+      minlength = "2"
+      maxlength= "45"
+      [(ngModel)] = "user.state"
+      #state = "ngModel">
+        <option *ngFor = 'let state of states, index as i'>{{state.name}}</option>  
+      </select>
+      <br>
+      <!--state Error Messages-->
+      <!--<div *ngIf = 'user.state.length < 1'><p>City is required</p></div>-->
+      <!---->
+      <label for="lucky">I'm feeling Lucky!</label>
+      <input 
+      type="radio" 
+      name="yes" 
+      value="true"
+      required
+      [(ngModel)] = "user.lucky"
+      #lucky = "ngModel"> Yes <br>
+      <input 
+      type="radio" 
+      name="no" 
+      value="false"
+      required
+      [(ngModel)] = "user.lucky"
+      #lucky = "ngModel"> No<br>
+      <br>
+      <button>Register</button>
+    </form>
+
+    {{ user | json }}
+  
+ 
+  

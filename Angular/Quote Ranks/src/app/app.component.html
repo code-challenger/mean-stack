@@ -1,0 +1,39 @@
+<h1>Add a Quote</h1>
+<br>
+<form (submit) = 'onSubmit()' id="qForm" name="qform" #qForm = ngForm>
+  <textarea 
+    name="text" 
+    cols="30" 
+    rows="10" 
+    minlength = "2"
+    maxlength = "200"
+    required
+    name="text"
+    [(ngModel)] = "quote.text"
+    #text = "ngModel"></textarea>
+  <br>
+  <div *ngIf = "quote.text.length < 2">
+    <p>Quote Required</p>
+  </div>
+  <label for="author">Author:</label>
+  <input 
+    type="text"
+    minlength = "2"
+    maxlength = "45"
+    required
+    name="author"
+    [(ngModel)] = "quote.author"
+    #author = "ngModel">
+  <br>
+  <div *ngIf = "quote.author.length < 2">
+    <p> Author Required</p>
+  </div>
+  <input 
+    type="submit" 
+    value="Add Quote!"
+    [disabled] = "!qForm.valid">
+</form>
+
+
+<app-quotes-list [id] = "ind" (quoteEmit)="onDestroy(ind)" [quote]="quotes[ind]" [index]="ind"
+  *ngFor = 'let quote of quotes, let ind = index'>{{quote}}</app-quotes-list>

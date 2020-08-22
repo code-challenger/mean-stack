@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mongoose Dashboard</title>
+    </head>
+    <body>
+        <h1>All Mongooses</h1>
+        <br>
+        <h2><a href="/new">Add a Mongoose!</a></h2>
+        <table border=1>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Show</th>
+                <th>Change</th>
+                <th>Delete</th>
+            </tr>
+            <% for(var mongoose of mongooses) { %>
+            <tr>
+                <td><%= mongoose.name %></td>
+                <td><%= mongoose.gender %></td>
+                <td><a href="/mongoose/<%= mongoose.id %>">See Mongoose!</a></td>
+                <td><a href="/edit/<%= mongoose.id %>">Edit Mongoose!</a></td>
+                <td><a href="/destroy/<%= mongoose.id %>" method="post">Delete Mongoose!</a></td>
+            </tr>
+            <% } %>
+        </table>
+        <br>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "bikes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "moment": "^2.18.1",
+    "mongoose": "^4.11.7",
+    "mongoose-unique-validator": "^1.0.5"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.2.1"
+  }
+}

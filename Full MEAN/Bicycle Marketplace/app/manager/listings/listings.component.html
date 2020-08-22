@@ -1,0 +1,107 @@
+<br>
+<br>
+<h1>Create Listing</h1>
+<form (submit) = "createBike()" id="bForm" name="bForm" #bForm=ngForm>
+  <label for="title">Title:</label>
+  <input 
+  type="text"
+  name="title"
+  required
+  [(ngModel)]="new_bike.title"
+  #title = "ngModel">
+  <p *ngIf="!title.valid && (title.dirty || title.touched)">Title required</p>
+  <br>
+  <label for="description">Description:</label>
+  <input 
+  type="text"
+  name="description"
+  maxlength = "250"
+  required 
+  [(ngModel)] = "new_bike.description"
+  #description = "ngModel">
+  <p *ngIf="description.errors?.maxlength && (description.touched || description.dirty)"> Description can not be longer than 250 characters</p>
+  <p *ngIf="description.errors?.required && (description.touched || description.dirty)">Description required</p>
+  <br>
+  <label for="price">Price:</label>
+  <input 
+  type="number"
+  name="price"
+  required
+  [(ngModel)] = "new_bike.price"
+  #price = "ngModel">
+  <p *ngIf="!price.valid && (price.touched || price.dirty)">Price required</p>
+  <br>
+  <label for="location">Location:</label>
+  <input 
+  type="text"
+  name="location"
+  required
+  [(ngModel)] = "new_bike.location"
+  #location = "ngModel">
+  <p *ngIf="!location.valid && (location.touched || location.dirty)">Location required</p>
+  <br>
+  <label for="image">Image Upload:</label>
+  <input 
+  type="text"
+  name="image"
+  required
+  [(ngModel)] = "new_bike.image"
+  #image = "ngModel">
+  <p *ngIf="!image.valid && (image.touched || image.dirty)">Image required</p>
+  <br>
+  <br>
+  <input 
+  type="submit"
+  value="Create Listing"
+  [disabled] = "!bForm.form.valid">
+</form>
+
+<h2>Edit/Delete Listings</h2>
+<div class ="bInfo" *ngFor="let bicycle of userBikes;let i = index">
+  <!--<h3>{{bicycle | json}}</h3>-->
+  <form (submit) = "updateBike(bicycle._id, bicycle)" id="uForm" name="uForm" #uForm=ngForm>
+    <label for="title">Title:</label>
+    <input 
+    type="text"
+    name="title"
+    [(ngModel)] = "bicycle.title"
+    #title = "ngModel">
+    <br>
+    <label for="description">Description:</label>
+    <input 
+    type="text"
+    name="description"
+    [(ngModel)] = "bicycle.description"
+    #description = "ngModel">
+    <br>
+    <label for="price">Price:</label>
+    <input 
+    type="number"
+    name="price"
+    [(ngModel)] = "bicycle.price"
+    #price = "ngModel">
+    <br>
+    <label for="location">Location:</label>
+    <input 
+    type="text"
+    name="location"
+    [(ngModel)] = "bicycle.location"
+    #location = "ngModel">
+    <br>
+    <label for="image">Image:</label>
+    <input 
+    type="text"
+    name="image"
+    [(ngModel)] = "bicycle.image"
+    #image = "ngModel">
+    <br>
+    <br>
+    <input 
+    type="submit"
+    value="Update">
+  </form>
+  <p>Current Image</p>
+  <img [src]=bicycle.image alt="Current Bike Image">
+  <br>
+  <button (click)="deleteBike(bicycle._id)">Delete</button>
+</div>

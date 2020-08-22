@@ -1,0 +1,117 @@
+<h1>Bicycle Marketplace</h1>
+
+<div class="randomBike" *ngIf="randomBike">
+  <h2>Bike of the Day</h2>
+  <img [src] = randomBike.image>
+  <p>Title: {{randomBike.title}}</p>
+  <p>Description: {{randomBike.description}}</p>
+  <p>Price: {{randomBike.price | currency:'USD':true}}</p>
+  <p>Location: {{randomBike.location}}</p>
+</div>
+
+<div id = "errors">
+  <p>{{errors}}</p>
+</div>
+
+
+<div id = "attempts" *ngIf="login_errors.status == true && login_errors.message.length == 5">
+  <p>You have unsuccessfully attempted to sign in more than 5 times. You will be blocked from further attempts for 15 minutes.</p>
+  <br>
+</div>
+  <div *ngIf="login_errors.message.length <= 5">
+  <h3>Login</h3>
+  <form (submit) = "login()" id="lForm" name="lForm" #lForm=ngForm>
+  <label for="email">Email:</label>
+  <input 
+  type="text"
+  name="email"
+  required
+  [(ngModel)] = "user_login.email"
+  #login_email = "ngModel">
+  <p *ngIf="!login_email.valid && (login_email.touched || login_email.dirty)">Email Required</p>
+  <br>
+  <label for="password">Password:</label>
+  <input
+  type="password"
+  name="password"
+  required
+  [(ngModel)] = "user_login.password"
+  #login_password = "ngModel">
+  <p *ngIf="!login_password.valid && (login_password.touched || login_password.dirty)">Password required</p>
+  <br>
+  <input 
+  type="submit"
+  value="Login"
+  [disabled] = "!lForm.form.valid">
+</form>
+</div>
+
+<div id ="blocked" *ngIf="login_errors.message.length > 5 && timeBlock <= 15">
+  <p>It has not been at least 15 minutes since your last login attempt - further attempts will be blocked until the time limit is expired.</p>
+</div>
+<br>
+<br>
+<h3>Registration</h3>
+<form (submit)="register()" id="rForm" name="rForm" #rForm=ngForm>
+  <label for="first">First Name:</label>
+  <input 
+  type="text"
+  name="first_name"
+  required
+  minlength="2"
+  [(ngModel)] = "user.first_name"
+  #first_name = "ngModel">
+  <p *ngIf="first_name.errors?.minlength && (first_name.dirty || first_name.touched)">First Name must be at least 2 characters long</p>
+	<p *ngIf="first_name.errors?.required && (first_name.dirty || first_name.touched)">First Name required</p>
+  <br>
+  <label for="last">Last Name:</label>
+  <input 
+  type="text"
+  name="last_name"
+  required
+  minlength="2"
+  [(ngModel)] = "user.last_name"
+  #last_name = "ngModel">
+  <p *ngIf="last_name.errors?.minlength && (last_name.dirty || last_name.touched)">Last Name must be at least 2 characters long</p>
+	<p *ngIf="last_name.errors?.required && (last_name.dirty || last_name.touched)">Last Name required</p>
+  <br>
+  <label for="email">Email:</label>
+  <input 
+  type="text"
+  name="email"
+  required
+  minlength="6"
+  pattern="^([A-Za-z0-9._\-]+)@([a-zA-Z0-9._\-]+)\.([a-zA-Z]+)$"
+  [(ngModel)] = "user.email"
+  #email = "ngModel">
+  <p *ngIf="email.errors?.pattern && (email.dirty || email.touched)">Email format is invalid</p>
+  <p *ngIf="email.errors?.minlength && (email.dirty || email.touched)">Email must be at least 6 characters long</p>
+	<p *ngIf="email.errors?.required && (email.dirty || email.touched)">Email required</p>
+  <br>
+  <label for="password">Password:</label>
+  <input 
+  type="password"
+  name="password"
+  required 
+  minlength="16"
+  [(ngModel)] = "user.password"
+  #password = "ngModel">
+  <p *ngIf="password.errors?.minlength && (password.dirty || password.touched)">Password must be at least 16 characters long</p>
+  <p *ngIf="password.errors?.required && (password.dirty || password.touched)">Password required</p>
+  <br>
+  <label for="confirmPassword">Password Confirmation:</label>
+  <input 
+  type="password"
+  name="confirmPassword"
+  requiredminlength="16"
+  [(ngModel)] = "user.confirmPassword"
+  #confirmPassword = "ngModel">
+  <p *ngIf="!confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)">Confirmation password required</p>
+	<p *ngIf="!(user.confirmPassword == user.password) && (confirmPassword.dirty || confirmPassword.touched)">Password and Password Confirmation do not match</p>
+  <br>
+  <br>
+  <input 
+  type="submit"
+  value="Register"
+  [disabled] = "!rForm.form.valid || !user.password == user.confirmPassword">
+</form>

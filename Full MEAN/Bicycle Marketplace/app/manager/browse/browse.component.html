@@ -1,0 +1,30 @@
+<br>
+<br>
+<div class="searchBar">
+  <label for="search">Search:</label>
+  <input 
+  type="text"
+  name="search"
+  [(ngModel)] = "searchString">
+</div>
+<div class="bicycles">
+  <div *ngFor="let bike of bicycles | filter: searchString;  let i = index">
+    <h3>Title: {{bike.title}}</h3>
+    <img [src]=bike.image alt="Bike">
+    <p>Description: {{bike.description}}</p>
+    <p>Price: {{bike.price | currency:'USD':true}}</p>
+    <p>Location: {{bike.location}}</p>
+    <button *ngIf="userId == bike._user" (click)="deleteBike(bike.id, i)">Delete</button>
+    <button *ngIf="userId != bike._user" (click)="alert(bike._user)">Contact</button>
+  </div>
+</div>
+
+
+<div id="contactModal" class="modal" *ngIf="display == true">
+  <button class="close" (click)="closeAlert()" >Close</button>
+  <h3>Name: {{contact.name}}</h3>
+  <h3>Email: {{contact.email}}</h3>
+</div>
+
+
+

@@ -1,1 +1,2 @@
-# mean-stack
+# mean
+project in MEAN stack

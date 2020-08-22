@@ -1,0 +1,19 @@
+<h1>Power Levels</h1>
+<p>PowerComponent</p>
+
+<form (submit)='calcPower()'>
+    <label for="level">Initial Power Level:</label>
+    <select name="initPower" [(ngModel)] ="initPower">
+        <option *ngFor='let number of numbers'>{{number}}</option>
+    </select>
+    <input type="submit" value="Calculate Powers">
+</form>
+
+<div class="containers">    
+    <app-level type="Human" [initPower] = "initPower" mult="1"></app-level>
+    <app-level type="Saiyan" [initPower] = "initPower" mult="10"></app-level>
+    <app-level type="SuperSaiyan" [initPower] = "initPower" mult="90"></app-level>
+    <app-level type="SuperSaiyanTwo" [initPower] = "initPower" mult="150"></app-level>
+    <app-level type="SuperSaiyanThree" [initPower] = "initPower" mult="250"></app-level>
+    <app-level type="SuperSaiyanFour" [initPower] = "initPower" mult="500"></app-level>
+</div>

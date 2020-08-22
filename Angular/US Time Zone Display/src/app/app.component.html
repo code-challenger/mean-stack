@@ -1,0 +1,16 @@
+
+<div style="text-align:center">
+  <h1>{{title}}</h1>
+  
+ <button 
+  *ngFor = 'let zone of zones'
+  (click) = 'onSubmit(zone.zone)'
+ >{{zone.zone}}
+ </button>
+
+ <button
+ (click) = 'clear()'
+ >clear</button>
+
+ <h3 *ngIf = 'clickedOn'>{{currentTime | date:'medium'}}</h3>
+  

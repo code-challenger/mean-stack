@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mongoose Dashboard</title>
+    </head>
+    <body>
+        <h1>Edit <%= mongoose.name %> the Mongoose!</h1>
+        <br>
+        <br>
+        <form action="/editMongoose/<%= mongoose.id %>" method="post">
+            <label for="name">Name:</label>
+            <input type="text" name="name"></input>
+            <br>
+            <br>
+            <label for="gender">Gender:</label>
+            <input type="text" name="gender"></input><br>
+            <br>
+            <input type="submit" value="Edit!">
+        </form>
+        <br>
+        <a href="/">Home</a>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+<div class="category">
+  <p>{{type}}</p>
+  <br>
+  <p>Power Level: <span *ngIf='initPower'>{{initPower*mult}}</span></p>
+  <br>
+  <span *ngIf = '(initPower * mult) > 9000 && (initPower * mult) < 20000'>Over 9,000!</span>
+  <span *ngIf = '(initPower * mult) >= 20000 && (initPower * mult) < 50000'>Superlative!</span>
+  <span *ngIf = '(initPower * mult) >= 50000'>The One</span>
+</div>
+

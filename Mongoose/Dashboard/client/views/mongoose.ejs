@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mongoose Dashboard</title>
+    </head>
+    <body>
+        <h1> Welcome to <%= mongoose.name %>'s Page!</h1>
+        <br>
+        <h3>Stats</h3>
+        <p>Name: <%= mongoose.name %></p>
+        <p>Gender: <%= mongoose.gender %></p>
+        <br>
+        <br>
+        <a href="/edit/<%= mongoose.id %>">Edit</a>
+        <a href="/destroy/<%= mongoose.id %>" method="post">Delete</a>
+        <a href="/">Home</a>
+    </body>
+</html>

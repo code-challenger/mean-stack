@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    </head>
+    <body>
+        <button id ="button">Click for Name!</button>
+        <script> 
+        (function(){
+            var name;   
+            $.get("https://api.github.com/users/neumeye9", displayName)
+            //Notice that displayName is a function tha takes in 1 parameter (this is the data that comes back from the API)
+            function displayName(data){
+                // console.log(data);
+                name = data.login
+                console.log(data.login);
+        }
+        
+        var button = document.getElementById("button");
+            button.addEventListener("click", onClick);
+            function onClick(){
+                alert(`Your GitHub username is ${name}`);
+        }    
+    }());  
+        </script>
+    </body>
+</html>

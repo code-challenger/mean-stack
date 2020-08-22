@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Quoting Dojo </title>
+    </head>
+    <body>
+        <h1> Here are some awesome quotes! </h1>
+        <br>
+        <% for(var user of users){ %>
+            <p><%= user.quote %></p>
+            <p> - <%= user.name %> at <%= moment(user.posted_at).format('hh:mma MMMM do, YYYY') %></p>
+        <% }  %>
+        <br>
+    </body>
+</html>

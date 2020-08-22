@@ -1,0 +1,17 @@
+<h2>Quotes List:</h2>
+<br>
+<div class="container" >
+  <p>" {{quote.text}} "</p>
+  <p>- {{quote.author}}</p>
+  <button (click) = "onUpVote()">Vote Up</button>
+  <button (click) = "onDownVote()">Vote Down</button>
+  <button (click) = "onDestroy()">Delete</button>
+  <div class="total">
+    <div *ngIf = "quote.votes < 0">
+      <h2> {{quote.votes}}</h2>
+    </div>
+    <div *ngIf = "quote.votes >= 0">
+      <h2>+ {{quote.votes}}</h2>
+    <div>
+  </div>
+  </div>
